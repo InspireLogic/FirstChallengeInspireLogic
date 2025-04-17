@@ -8,61 +8,156 @@ class Loginpage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<Loginpage> {
-  final TextEditingController _email = TextEditingController();
-  final TextEditingController _senha = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Login page")),
-      body: Container(
-        width: double.infinity,
-        padding: EdgeInsets.all(16),
+      backgroundColor: const Color(0xFF0B0D17),
+      appBar: AppBar(
+        backgroundColor: const Color(0xFF0B0D17),
+        elevation: 0,
+        iconTheme: const IconThemeData(color: Colors.white),
+      ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(24),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(height: 100),
-
-            Text(
-              "Login",
-              style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+            const Text(
+              "Login or create an account",
+              textAlign: TextAlign.start,
+              style: TextStyle(
+                fontSize: 28,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
             ),
-
-            SizedBox(height: 40),
-
+            const SizedBox(height: 12),
+            const Text(
+              "With a single account on Artic Travels, Hotels.com, and Vrbo, your travels become even more amazing and seamless to enjoy to the fullest.",
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 16, color: Colors.white70),
+            ),
+            const SizedBox(height: 40),
+            _buildGoogleButton(),
+            const SizedBox(height: 30),
+            const Text(
+              "ou",
+              style: TextStyle(fontSize: 18, color: Colors.white70),
+            ),
+            const SizedBox(height: 30),
             TextField(
-              decoration: InputDecoration(labelText: "Email"),
-              controller: _email,
-            ),
-
-            SizedBox(height: 20),
-
-            TextField(
-              decoration: InputDecoration(labelText: "Senha"),
-              obscureText: true,
-              controller: _senha,
-            ),
-
-            SizedBox(height: 30),
-
-            ElevatedButton(
-              onPressed: () {},
-              style: ButtonStyle(
-                backgroundColor: WidgetStateProperty.all(Color(0xFF0D47A1)),
-                padding: WidgetStateProperty.all(
-                  EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+              controller: emailController,
+              keyboardType: TextInputType.emailAddress,
+              style: const TextStyle(color: Colors.white),
+              decoration: InputDecoration(
+                hintText: "example: MauricioLindo@outlook.com",
+                hintStyle: TextStyle(color: Colors.grey[400]),
+                filled: true,
+                fillColor: Colors.white10,
+                contentPadding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 14,
                 ),
-                shape: WidgetStateProperty.all(
-                  RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: const BorderSide(color: Colors.grey),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: const BorderSide(color: Colors.grey),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: const BorderSide(
+                    color: Color(0xFFB3D4FC),
+                    width: 2,
                   ),
                 ),
               ),
-              child: Text(
-                "Submit",
-                style: TextStyle(color: Colors.white, fontSize: 16),
+            ),
+            const SizedBox(height: 40),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFFB3D4FC),
+                  foregroundColor: const Color(0xFF0B0D17),
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                ),
+                child: const Text(
+                  "Continue",
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
               ),
+            ),
+
+            const SizedBox(height: 40),
+            _buildAppleButton(),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildGoogleButton() {
+    return SizedBox(
+      width: double.infinity,
+      child: ElevatedButton(
+        onPressed: () {},
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.white,
+          foregroundColor: Colors.black87,
+          padding: const EdgeInsets.symmetric(vertical: 14),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(30),
+          ),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset("assets/images/googleIcon.png", height: 24, width: 24),
+            const SizedBox(width: 12),
+            const Text(
+              "Login with Google",
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildAppleButton() {
+    return SizedBox(
+      width: double.infinity,
+      child: ElevatedButton(
+        onPressed: () {},
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.black, // cor do fundo do botão da Apple
+          foregroundColor: Colors.white,
+          padding: const EdgeInsets.symmetric(vertical: 14),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(30),
+          ),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.network(
+              "https://img.icons8.com/fluency/48/mac-os.png",
+              height: 24,
+              width: 24,
+            ),
+            const SizedBox(width: 12),
+            const Text(
+              "Login with Apple",
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
           ],
         ),
