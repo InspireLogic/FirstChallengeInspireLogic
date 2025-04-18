@@ -5,43 +5,35 @@ class Resort extends Model {}
 
 Resort.init({
   id: {
-    type: DataTypes.UUID,
-    defaultValue: DataTypes.UUIDV4,
+    type: DataTypes.INTEGER,
+    autoIncrement: true,
     primaryKey: true
   },
-  name: {
-    type: DataTypes.STRING,
+  region_id: {
+    type: DataTypes.INTEGER,
     allowNull: false
   },
-  location: {
-    type: DataTypes.STRING,
+  name_resort: {
+    type: DataTypes.STRING(60),
     allowNull: false
   },
   description: {
     type: DataTypes.TEXT,
     allowNull: true
   },
-  rating: {
-    type: DataTypes.FLOAT,
-    defaultValue: 0,
-    validate: {
-      min: 0,
-      max: 5
-    }
-  },
-  pricePerNight: {
-    type: DataTypes.FLOAT,
+  lift_access: {
+    type: DataTypes.BOOLEAN,
     allowNull: false
   },
-  available: {
-    type: DataTypes.BOOLEAN,
-    defaultValue: true
+  image_url: {
+    type: DataTypes.STRING(100),
+    allowNull: false
   }
 }, {
   sequelize,
   modelName: 'Resort',
   tableName: 'resorts',
-  timestamps: true
+  timestamps: false
 });
 
 module.exports = Resort;
