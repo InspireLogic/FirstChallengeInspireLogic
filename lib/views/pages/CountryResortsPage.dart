@@ -13,22 +13,17 @@ class _CountryResortsPageState extends State<CountryResortsPage> {
   List<String> filteredCountries = [];
   String searchCountryText = '';
 
-  // Função para carregar e processar o arquivo CSV
   Future<void> loadCsvData() async {
     final String csvData = await rootBundle.loadString(
       'assets/images/countries_resorts.csv',
     );
 
     List<List<dynamic>> csvTable = CsvToListConverter().convert(csvData);
-
     Map<String, List<String>> tempCountryResorts = {};
 
-    // Processar os dados do CSV
     for (int i = 1; i < csvTable.length; i++) {
-      String country =
-          csvTable[i][2].toString(); // A coluna "Country" está na posição 2
-      String resort =
-          csvTable[i][1].toString(); // A coluna "Name" está na posição 1
+      String country = csvTable[i][2].toString();
+      String resort = csvTable[i][1].toString();
 
       if (tempCountryResorts.containsKey(country)) {
         tempCountryResorts[country]?.add(resort);
@@ -39,9 +34,7 @@ class _CountryResortsPageState extends State<CountryResortsPage> {
 
     setState(() {
       countryResorts = tempCountryResorts;
-      filteredCountries =
-          countryResorts.keys
-              .toList(); // Inicializa a lista de países filtrados
+      filteredCountries = countryResorts.keys.toList();
     });
   }
 
@@ -51,7 +44,6 @@ class _CountryResortsPageState extends State<CountryResortsPage> {
     loadCsvData();
   }
 
-  // Função para filtrar os países com base no texto da pesquisa
   void filterCountries(String searchText) {
     setState(() {
       searchCountryText = searchText;
@@ -68,14 +60,12 @@ class _CountryResortsPageState extends State<CountryResortsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF0B0D17), // Fundo escuro
+      backgroundColor: const Color(0xFF0B0D17),
       appBar: AppBar(
         title: Text('Países e Resorts', style: TextStyle(color: Colors.white)),
         backgroundColor: const Color(0xFF0B0D17),
         elevation: 0,
-        iconTheme: const IconThemeData(
-          color: Colors.white,
-        ), // Cor clara para o ícone de voltar
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: Column(
         children: [
@@ -94,7 +84,7 @@ class _CountryResortsPageState extends State<CountryResortsPage> {
                 ),
               ),
               onChanged: (value) {
-                filterCountries(value); // Filtra os países conforme digita
+                filterCountries(value);
               },
               style: TextStyle(color: Colors.white),
             ),
@@ -112,7 +102,6 @@ class _CountryResortsPageState extends State<CountryResortsPage> {
                                 style: TextStyle(color: Colors.white),
                               ),
                               onTap: () {
-                                // Quando clicar em um país, exibe os resorts
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
@@ -151,10 +140,9 @@ class _ResortsPageState extends State<ResortsPage> {
   @override
   void initState() {
     super.initState();
-    filteredResorts = widget.resorts; // Inicializa com todos os resorts
+    filteredResorts = widget.resorts;
   }
 
-  // Função para filtrar os resorts com base no texto da pesquisa
   void filterResorts(String searchText) {
     setState(() {
       searchResortText = searchText;
@@ -171,7 +159,7 @@ class _ResortsPageState extends State<ResortsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF0B0D17), // Fundo escuro
+      backgroundColor: const Color(0xFF0B0D17),
       appBar: AppBar(
         title: Text(
           'Resorts em ${widget.country}',
@@ -179,9 +167,7 @@ class _ResortsPageState extends State<ResortsPage> {
         ),
         backgroundColor: const Color(0xFF0B0D17),
         elevation: 0,
-        iconTheme: const IconThemeData(
-          color: Colors.white,
-        ), // Cor clara para o ícone de voltar
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: Column(
         children: [
@@ -200,7 +186,7 @@ class _ResortsPageState extends State<ResortsPage> {
                 ),
               ),
               onChanged: (value) {
-                filterResorts(value); // Filtra os resorts conforme digita
+                filterResorts(value);
               },
               style: TextStyle(color: Colors.white),
             ),
@@ -222,21 +208,16 @@ class _ResortsPageState extends State<ResortsPage> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Expanded(
-                                // Garante que o nome do resort ocupe o espaço disponível
                                 child: Text(
                                   filteredResorts[index],
                                   style: TextStyle(
                                     color: Colors.white,
-                                    overflow:
-                                        TextOverflow
-                                            .ellipsis, // Adiciona reticências se o nome for muito grande
+                                    overflow: TextOverflow.ellipsis,
                                   ),
                                 ),
                               ),
                               ElevatedButton(
-                                onPressed: () {
-                                  // Ação do botão de reserva (sem funcionalidade por enquanto)
-                                },
+                                onPressed: () {},
                                 style: ElevatedButton.styleFrom(
                                   foregroundColor: Colors.white,
                                   backgroundColor: Colors.lightBlue,
@@ -256,8 +237,4 @@ class _ResortsPageState extends State<ResortsPage> {
       ),
     );
   }
-}
-
-void main() {
-  runApp(MaterialApp(home: CountryResortsPage()));
 }
