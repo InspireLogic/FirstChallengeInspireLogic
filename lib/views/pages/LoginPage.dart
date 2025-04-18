@@ -1,3 +1,5 @@
+import 'package:challenge_inspire_logic/views/widgets/buttons/AppleButton.dart';
+import 'package:challenge_inspire_logic/views/widgets/buttons/GoogleButton.dart';
 import 'package:flutter/material.dart';
 
 class Loginpage extends StatefulWidget {
@@ -40,7 +42,7 @@ class _LoginPageState extends State<Loginpage> {
               style: TextStyle(fontSize: 16, color: Colors.white70),
             ),
             const SizedBox(height: 40),
-            _buildGoogleButton(),
+            GoogleLoginButton(onPressed: () {}),
             const SizedBox(height: 30),
             const Text(
               "ou",
@@ -98,67 +100,7 @@ class _LoginPageState extends State<Loginpage> {
             ),
 
             const SizedBox(height: 40),
-            _buildAppleButton(),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildGoogleButton() {
-    return SizedBox(
-      width: double.infinity,
-      child: ElevatedButton(
-        onPressed: () {},
-        style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.white,
-          foregroundColor: Colors.black87,
-          padding: const EdgeInsets.symmetric(vertical: 14),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(30),
-          ),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset("assets/images/googleIcon.png", height: 24, width: 24),
-            const SizedBox(width: 12),
-            const Text(
-              "Login with Google",
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildAppleButton() {
-    return SizedBox(
-      width: double.infinity,
-      child: ElevatedButton(
-        onPressed: () {},
-        style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.black, // cor do fundo do botão da Apple
-          foregroundColor: Colors.white,
-          padding: const EdgeInsets.symmetric(vertical: 14),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(30),
-          ),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.network(
-              "https://img.icons8.com/fluency/48/mac-os.png",
-              height: 24,
-              width: 24,
-            ),
-            const SizedBox(width: 12),
-            const Text(
-              "Login with Apple",
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            ),
+            AppleLoginButton(onPressed: () {}),
           ],
         ),
       ),
