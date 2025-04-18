@@ -225,7 +225,7 @@ class _ResortsPageState extends State<ResortsPage> {
                                     borderRadius: BorderRadius.circular(8.0),
                                   ),
                                 ),
-                                child: Text('Reservar'),
+                                child: Text('Reservarr'),
                               ),
                             ],
                           ),
