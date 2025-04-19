@@ -1,8 +1,10 @@
 import 'package:challenge_inspire_logic/views/HomePage.dart';
 import 'package:challenge_inspire_logic/views/pages/InitialPage.dart';
+import 'package:challenge_inspire_logic/views/pages/LodgingsPage.dart';
 import 'package:challenge_inspire_logic/views/pages/LoginPage.dart';
 
 import 'package:challenge_inspire_logic/views/pages/CountryResortsPage.dart';
+import 'package:challenge_inspire_logic/views/pages/ResortsPage.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -24,7 +26,7 @@ class MyApp extends StatelessWidget {
         '/initial': (context) => Initialpage(),
         '/login': (context) => Loginpage(),
         '/regions': (context) => CountryResortsPage(),
-        '/lodging': (context) => CountryResortsPage(),
+        '/lodgings': (context) => LodgingsPage(),
         '/resorts': (context) => CountryResortsPage(),
         '/passes': (context) => CountryResortsPage(),
       },
