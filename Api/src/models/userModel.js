@@ -1,7 +1,7 @@
 const { DataTypes, Model } = require('sequelize');
 const sequelize = require('../configs/databaseConn');
 
-class User extends Model {}
+class UserModel extends Model {}
 
 User.init({
   id: {
@@ -39,4 +39,4 @@ User.init({
   timestamps: false
 });
 
-module.exports = User;
+module.exports = UserModel;

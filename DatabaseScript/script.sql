@@ -2,11 +2,10 @@ create table agents
 (
     id             int auto_increment
         primary key,
-    name_agents    varchar(60)                         not null,
-    email_agents   varchar(60)                         null,
-    specialization varchar(10)                         not null,
-    avaliable      tinyint(1)                          not null,
-    created_at     timestamp default CURRENT_TIMESTAMP null
+    name_agents    varchar(60) not null,
+    email_agents   varchar(60) null,
+    specialization varchar(10) not null,
+    avaliable      tinyint(1)  not null
 );
 
 create table passes
@@ -24,7 +23,7 @@ create table regions
         primary key,
     name_local  varchar(60)  not null,
     description text         null,
-    image_ur    varchar(100) null
+    image_url   varchar(100) null
 );
 
 create table lodging

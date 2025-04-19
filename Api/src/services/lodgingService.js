@@ -1,4 +1,4 @@
-const Lodging = require('../models/modelLodging');
+const Lodging = require('../models/lodgingModel');
 const { sequelize } = require('../models'); 
 
 class LodgingService {

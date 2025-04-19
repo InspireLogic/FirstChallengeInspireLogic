@@ -1,9 +1,9 @@
 const { DataTypes, Model } = require('sequelize');
-const sequelize = require('../configs/databaseConn');
+const sequelize = require('../configs/sequelizeConnectDB');
 
-class Resort extends Model {}
+class ResortModel extends Model {}
 
-Resort.init({
+ResortModel.init({
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
@@ -36,4 +36,4 @@ Resort.init({
   timestamps: false
 });
 
-module.exports = Resort;
+module.exports = ResortModel;
