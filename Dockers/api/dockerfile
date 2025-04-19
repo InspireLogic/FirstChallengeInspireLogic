@@ -1,0 +1,13 @@
+FROM node:23-slim
+
+WORKDIR /usr/src/app
+
+COPY Api/package*.json ./
+
+RUN npm install
+
+COPY Api/ ./
+
+EXPOSE 3000
+
+CMD ["npm", "start"]
