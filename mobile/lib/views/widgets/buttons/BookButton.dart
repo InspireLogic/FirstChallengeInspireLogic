@@ -6,6 +6,7 @@ class BookButton extends StatefulWidget {
   final String text;
   final double? width;
   final EdgeInsetsGeometry? padding;
+  final bool small;
 
   const BookButton({
     super.key,
@@ -13,6 +14,7 @@ class BookButton extends StatefulWidget {
     this.text = 'BOOK HERE',
     this.width,
     this.padding,
+    this.small = false,
   });
 
   @override
@@ -62,7 +64,7 @@ class _BookButtonState extends State<BookButton>
       child: ScaleTransition(
         scale: _scaleAnimation,
         child: Container(
-          width: widget.width ?? double.infinity,
+          width: widget.width ?? (widget.small ? 120 : double.infinity),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(30),
             boxShadow: [
@@ -98,27 +100,31 @@ class _BookButtonState extends State<BookButton>
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                  widget.text,
-                  style: GoogleFonts.montserrat(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                    letterSpacing: 1.5,
+                Flexible(
+                  child: Text(
+                    widget.text,
+                    style: GoogleFonts.montserrat(
+                      fontSize: widget.small ? 12 : 16,
+                      fontWeight: FontWeight.w600,
+                      letterSpacing: 1.2,
+                    ),
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
-                const SizedBox(width: 8),
-                AnimatedContainer(
-                  duration: const Duration(milliseconds: 200),
-                  padding: const EdgeInsets.all(4),
-                  decoration: BoxDecoration(
-                    color:
-                        _isHovered
-                            ? Colors.white.withOpacity(0.2)
-                            : Colors.transparent,
-                    borderRadius: BorderRadius.circular(50),
+                const SizedBox(width: 4),
+                if (!widget.small)
+                  AnimatedContainer(
+                    duration: const Duration(milliseconds: 200),
+                    padding: const EdgeInsets.all(4),
+                    decoration: BoxDecoration(
+                      color:
+                          _isHovered
+                              ? Colors.white.withOpacity(0.2)
+                              : Colors.transparent,
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                    child: const Icon(Icons.arrow_forward, size: 18),
                   ),
-                  child: const Icon(Icons.arrow_forward, size: 20),
-                ),
               ],
             ),
           ),
