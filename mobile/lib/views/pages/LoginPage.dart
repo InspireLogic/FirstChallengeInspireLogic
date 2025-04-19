@@ -1,5 +1,6 @@
 import 'package:challenge_inspire_logic/views/widgets/buttons/AppleButton.dart';
 import 'package:challenge_inspire_logic/views/widgets/buttons/GoogleButton.dart';
+import 'package:challenge_inspire_logic/views/widgets/txtFormField.dart';
 import 'package:flutter/material.dart';
 
 class Loginpage extends StatefulWidget {
@@ -49,41 +50,16 @@ class _LoginPageState extends State<Loginpage> {
               style: TextStyle(fontSize: 18, color: Colors.white70),
             ),
             const SizedBox(height: 30),
-            TextField(
+            TxtFormField(
               controller: emailController,
-              keyboardType: TextInputType.emailAddress,
-              style: const TextStyle(color: Colors.white),
-              decoration: InputDecoration(
-                hintText: "example: MauricioLindo@outlook.com",
-                hintStyle: TextStyle(color: Colors.grey[400]),
-                filled: true,
-                fillColor: Colors.white10,
-                contentPadding: const EdgeInsets.symmetric(
-                  horizontal: 16,
-                  vertical: 14,
-                ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
-                  borderSide: const BorderSide(color: Colors.grey),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
-                  borderSide: const BorderSide(color: Colors.grey),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
-                  borderSide: const BorderSide(
-                    color: Color(0xFFB3D4FC),
-                    width: 2,
-                  ),
-                ),
-              ),
+              hintText: "example: MauricioLindo@outlook.com",
+              inputType: TextInputType.emailAddress,
             ),
             const SizedBox(height: 40),
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () => Navigator.of(context).pushNamed('/home'),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFFB3D4FC),
                   foregroundColor: const Color(0xFF0B0D17),
