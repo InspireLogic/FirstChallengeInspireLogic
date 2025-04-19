@@ -1,15 +1,13 @@
 const databaseConn = require('../configs/sequelizeConnectDB');
 const checkDatabaseConnection = require('../configs/checkDataBaseConnection');
+const req = require('./tripModel');
 
-const validateDatabase = async (model) => {
-    try {
-        const isConnected = await checkDatabaseConnection();
-        if (!isConnected) throw new Error('Database connection failed');
-        await databaseConn.authenticate(); // garante que a conexão está OK
-        return await model.sync();
-    } catch (error) {
-        throw new Error(`Database validation error: ${error.message}`);
+const validateSyncModel = async (model) =>{
+    try{
+        const isconnected = await checkDatabaseConnection();
+        return isconnected? model.sync() : 'error connected or model';
+    }catch (error){
+        throw new Error(error);
     }
-};
-
-module.exports = validateDatabase;
+}
+module.exports = validateSyncModel;

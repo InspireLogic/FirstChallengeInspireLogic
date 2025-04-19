@@ -1,4 +1,4 @@
-const Resort = require('../models/modelResorts');
+const Resort = require('../models/resortsModel');
 const { sequelize } = require('../models');
 
 class ResortService {
