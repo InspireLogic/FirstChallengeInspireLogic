@@ -109,9 +109,6 @@ docker-compose up --build -d
 
     docker-compose down
 
-# Acessar o terminal do container da API
-
-    docker exec -it firstchallengeinspirelogic-api-1 sh
 
 # Limpeza (caso algo dê errado)
 
