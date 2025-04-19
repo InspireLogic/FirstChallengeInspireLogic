@@ -1,11 +1,12 @@
 services:
   api:
     build:
-      context: ./api
+      context: .
+      dockerfile: Dockers/api/dockerfile
     ports:
       - "3000:3000"
     volumes:
-      - ./api:/app
+      - ./Api:/app
       - /app/node_modules
     environment:
       - NODE_ENV=development
