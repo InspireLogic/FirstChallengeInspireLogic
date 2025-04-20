@@ -85,7 +85,7 @@ class RegionCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                // Título
+                // Title
                 Text(
                   title,
                   style: GoogleFonts.montserrat(
@@ -97,7 +97,7 @@ class RegionCard extends StatelessWidget {
 
                 const SizedBox(height: 8),
 
-                // Descrição
+                // Description
                 Text(
                   description,
                   style: GoogleFonts.montserrat(
@@ -135,7 +135,7 @@ class RegionCard extends StatelessWidget {
 
                 const SizedBox(height: 12),
 
-                // Botão
+                // Button
                 BookButton(
                   onPressed: onPressed,
                   text: 'EXPLORE REGION',

@@ -46,9 +46,9 @@ class _HomePageState extends State<HomePage> {
                         ),
                   ),
                 ),
-                // Camada escura para melhorar legibilidade do texto
+                // Dark overlay to improve text readability
                 Container(height: 300, color: Colors.black.withOpacity(0.4)),
-                // Textos e botão
+                // Text and button
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 24),
                   child: Column(
@@ -86,7 +86,7 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
 
-            // Seção de opções
+            // Options section
             Padding(
               padding: const EdgeInsets.all(16),
               child: Column(
@@ -101,7 +101,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   const SizedBox(height: 16),
-                  // Grid de opções
+                  // Options grid
                   GridView.count(
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
@@ -132,12 +132,12 @@ class _HomePageState extends State<HomePage> {
                         title: 'Passes',
                         imageUrl:
                             'https://images.unsplash.com/photo-1605540436563-5bca919ae766?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2669&q=80',
-                        routeName: '/login',
+                        routeName: '/passes',
                       ),
                     ],
                   ),
                   const SizedBox(height: 24),
-                  // Botão CTA adicional
+                  // Additional CTA button
                   BookButton(onPressed: () {}),
                 ],
               ),

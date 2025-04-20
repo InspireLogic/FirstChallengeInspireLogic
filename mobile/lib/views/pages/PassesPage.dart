@@ -1,23 +1,23 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../widgets/LodgingCard.dart';
+import '../widgets/PassCard.dart';
 import '../widgets/buttons/BookButton.dart';
 
-class LodgingsPage extends StatefulWidget {
-  const LodgingsPage({super.key});
+class PassesPage extends StatefulWidget {
+  const PassesPage({super.key});
 
   @override
-  State<LodgingsPage> createState() => _LodgingsPageState();
+  State<PassesPage> createState() => _PassesPageState();
 }
 
-class _LodgingsPageState extends State<LodgingsPage> {
-  final List<Map<String, dynamic>> _lodgingFilters = [
+class _PassesPageState extends State<PassesPage> {
+  final List<Map<String, dynamic>> _passFilters = [
     {'name': 'All', 'isSelected': true},
-    {'name': 'Hotel', 'isSelected': false},
-    {'name': 'Resort', 'isSelected': false},
-    {'name': 'Chalet', 'isSelected': false},
-    {'name': 'Cabin', 'isSelected': false},
+    {'name': '1-3 Days', 'isSelected': false},
+    {'name': '5-7 Days', 'isSelected': false},
+    {'name': 'Season', 'isSelected': false},
+    {'name': 'Family', 'isSelected': false},
   ];
 
   @override
@@ -36,7 +36,7 @@ class _LodgingsPageState extends State<LodgingsPage> {
                   height: 250,
                   child: CachedNetworkImage(
                     imageUrl:
-                        'https://images.unsplash.com/photo-1548873902-8b69fb85030a?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+                        'https://images.unsplash.com/photo-1492724724894-7464c27d0ceb?q=80&w=2674&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
                     fit: BoxFit.cover,
                     width: double.infinity,
                     placeholder:
@@ -62,7 +62,7 @@ class _LodgingsPageState extends State<LodgingsPage> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Text(
-                        'Premium Accommodations',
+                        'Ski & Snowboard Passes',
                         textAlign: TextAlign.center,
                         style: GoogleFonts.montserrat(
                           color: Colors.white,
@@ -72,7 +72,7 @@ class _LodgingsPageState extends State<LodgingsPage> {
                       ),
                       const SizedBox(height: 16),
                       Text(
-                        'Find the perfect place to stay during your winter vacation',
+                        'Get unlimited access to the best slopes with our premium passes',
                         textAlign: TextAlign.center,
                         style: GoogleFonts.montserrat(
                           color: Colors.white,
@@ -107,7 +107,7 @@ class _LodgingsPageState extends State<LodgingsPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Filter By Type',
+                    'Filter By Duration',
                     style: GoogleFonts.montserrat(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
@@ -119,7 +119,7 @@ class _LodgingsPageState extends State<LodgingsPage> {
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children:
-                          _lodgingFilters.map((filter) {
+                          _passFilters.map((filter) {
                             final isSelected = filter['isSelected'] as bool;
                             return Padding(
                               padding: const EdgeInsets.only(right: 8),
@@ -143,7 +143,7 @@ class _LodgingsPageState extends State<LodgingsPage> {
                                 onSelected: (selected) {
                                   setState(() {
                                     // Desmarcar todos os filtros primeiro
-                                    for (var item in _lodgingFilters) {
+                                    for (var item in _passFilters) {
                                       item['isSelected'] = false;
                                     }
                                     // Selecionar o filtro atual
@@ -159,14 +159,14 @@ class _LodgingsPageState extends State<LodgingsPage> {
               ),
             ),
 
-            // Lodgings list
+            // Passes list
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Recommended Lodgings',
+                    'Available Passes',
                     style: GoogleFonts.montserrat(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
@@ -174,47 +174,43 @@ class _LodgingsPageState extends State<LodgingsPage> {
                     ),
                   ),
                   const SizedBox(height: 16),
-                  LodgingCard(
-                    title: 'Alpine Luxury Hotel',
+                  PassCard(
+                    title: 'Winter Vacation Pass',
                     description:
-                        'Luxurious accommodations with breathtaking mountain views, spa, and fine dining.',
-                    location: 'Zermatt, Switzerland',
+                        'For those planning an extended stay. The perfect week-long mountain experience.',
                     imageUrl:
-                        'https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80',
-                    price: 450,
+                        'https://images.unsplash.com/photo-1605540436563-5bca919ae766?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2669&q=80',
+                    price: 499,
+                    duration: 7,
+                    benefits: [
+                      'Seven consecutive days of access',
+                      'Premium equipment storage',
+                      'Two free group lessons',
+                      '15% off equipment rental',
+                      'VIP access to resort facilities',
+                      'Mountain dining credit',
+                    ],
                     onPressed: () {},
                   ),
                   const SizedBox(height: 16),
-                  LodgingCard(
-                    title: 'Mountain View Chalet',
+                  PassCard(
+                    title: 'Season Ultimate Pass',
                     description:
-                        'Cozy wooden chalet with fireplace, ski-in/ski-out access, and private hot tub.',
-                    location: 'Aspen, Colorado',
+                        'For the true enthusiast. Unlimited access throughout the winter season.',
                     imageUrl:
-                        'https://images.unsplash.com/photo-1520984032042-162d526883e0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80',
-                    price: 320,
-                    onPressed: () {},
-                  ),
-                  const SizedBox(height: 16),
-                  LodgingCard(
-                    title: 'Ski Resort Suite',
-                    description:
-                        'All-inclusive resort with spacious suites, world-class dining, and direct lift access.',
-                    location: 'Whistler, Canada',
-                    imageUrl:
-                        'https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80',
-                    price: 550,
-                    onPressed: () {},
-                  ),
-                  const SizedBox(height: 16),
-                  LodgingCard(
-                    title: 'Rustic Mountain Cabin',
-                    description:
-                        'Authentic mountain experience with modern amenities, perfect for families.',
-                    location: 'Chamonix, France',
-                    imageUrl:
-                        'https://images.unsplash.com/photo-1553881651-43348b2ca74e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80',
-                    price: 280,
+                        'https://images.unsplash.com/photo-1517242810446-cc8951b2be40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2574&q=80',
+                    price: 1299,
+                    duration: 120,
+                    benefits: [
+                      'Full season access to all slopes',
+                      'Priority lift access',
+                      'Dedicated equipment storage',
+                      'Unlimited group lessons',
+                      '25% off private lessons',
+                      'Resort-wide discounts',
+                      'Access to exclusive events',
+                      'Free parking',
+                    ],
                     onPressed: () {},
                   ),
                 ],
@@ -229,7 +225,7 @@ class _LodgingsPageState extends State<LodgingsPage> {
               child: Column(
                 children: [
                   Text(
-                    'Looking for a custom package?',
+                    'Looking for custom options?',
                     style: GoogleFonts.montserrat(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -238,7 +234,7 @@ class _LodgingsPageState extends State<LodgingsPage> {
                   ),
                   const SizedBox(height: 12),
                   BookButton(
-                    text: 'CONTACT US',
+                    text: 'CONTACT SALES',
                     onPressed: () {},
                     padding: const EdgeInsets.symmetric(
                       vertical: 16,

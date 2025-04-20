@@ -1,23 +1,23 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../widgets/LodgingCard.dart';
+import '../widgets/RegionCard.dart';
 import '../widgets/buttons/BookButton.dart';
 
-class LodgingsPage extends StatefulWidget {
-  const LodgingsPage({super.key});
+class RegionsPage extends StatefulWidget {
+  const RegionsPage({super.key});
 
   @override
-  State<LodgingsPage> createState() => _LodgingsPageState();
+  State<RegionsPage> createState() => _RegionsPageState();
 }
 
-class _LodgingsPageState extends State<LodgingsPage> {
-  final List<Map<String, dynamic>> _lodgingFilters = [
+class _RegionsPageState extends State<RegionsPage> {
+  final List<Map<String, dynamic>> _regionFilters = [
     {'name': 'All', 'isSelected': true},
-    {'name': 'Hotel', 'isSelected': false},
-    {'name': 'Resort', 'isSelected': false},
-    {'name': 'Chalet', 'isSelected': false},
-    {'name': 'Cabin', 'isSelected': false},
+    {'name': 'Europe', 'isSelected': false},
+    {'name': 'North America', 'isSelected': false},
+    {'name': 'Asia', 'isSelected': false},
+    {'name': 'South America', 'isSelected': false},
   ];
 
   @override
@@ -36,7 +36,7 @@ class _LodgingsPageState extends State<LodgingsPage> {
                   height: 250,
                   child: CachedNetworkImage(
                     imageUrl:
-                        'https://images.unsplash.com/photo-1548873902-8b69fb85030a?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+                        'https://images.unsplash.com/photo-1485470733090-0aae1788d5af?q=80&w=2717&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
                     fit: BoxFit.cover,
                     width: double.infinity,
                     placeholder:
@@ -62,7 +62,7 @@ class _LodgingsPageState extends State<LodgingsPage> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Text(
-                        'Premium Accommodations',
+                        'Explore Winter Destinations',
                         textAlign: TextAlign.center,
                         style: GoogleFonts.montserrat(
                           color: Colors.white,
@@ -72,7 +72,7 @@ class _LodgingsPageState extends State<LodgingsPage> {
                       ),
                       const SizedBox(height: 16),
                       Text(
-                        'Find the perfect place to stay during your winter vacation',
+                        'Discover top skiing and snowboarding regions around the world',
                         textAlign: TextAlign.center,
                         style: GoogleFonts.montserrat(
                           color: Colors.white,
@@ -107,7 +107,7 @@ class _LodgingsPageState extends State<LodgingsPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Filter By Type',
+                    'Filter By Continent',
                     style: GoogleFonts.montserrat(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
@@ -119,7 +119,7 @@ class _LodgingsPageState extends State<LodgingsPage> {
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children:
-                          _lodgingFilters.map((filter) {
+                          _regionFilters.map((filter) {
                             final isSelected = filter['isSelected'] as bool;
                             return Padding(
                               padding: const EdgeInsets.only(right: 8),
@@ -143,7 +143,7 @@ class _LodgingsPageState extends State<LodgingsPage> {
                                 onSelected: (selected) {
                                   setState(() {
                                     // Desmarcar todos os filtros primeiro
-                                    for (var item in _lodgingFilters) {
+                                    for (var item in _regionFilters) {
                                       item['isSelected'] = false;
                                     }
                                     // Selecionar o filtro atual
@@ -159,14 +159,14 @@ class _LodgingsPageState extends State<LodgingsPage> {
               ),
             ),
 
-            // Lodgings list
+            // Regions list
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Recommended Lodgings',
+                    'Popular Regions',
                     style: GoogleFonts.montserrat(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
@@ -174,47 +174,36 @@ class _LodgingsPageState extends State<LodgingsPage> {
                     ),
                   ),
                   const SizedBox(height: 16),
-                  LodgingCard(
-                    title: 'Alpine Luxury Hotel',
+                  RegionCard(
+                    title: 'The Alps',
                     description:
-                        'Luxurious accommodations with breathtaking mountain views, spa, and fine dining.',
-                    location: 'Zermatt, Switzerland',
+                        'Home to some of the most iconic ski resorts in the world with perfect powder snow and breathtaking views.',
+                    country: 'Switzerland',
                     imageUrl:
-                        'https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80',
-                    price: 450,
+                        'https://images.unsplash.com/photo-1452784444945-3f422708fe5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2672&q=80',
+                    activities: ['Skiing', 'Snowboarding', 'Après-ski'],
                     onPressed: () {},
                   ),
                   const SizedBox(height: 16),
-                  LodgingCard(
-                    title: 'Mountain View Chalet',
+                  RegionCard(
+                    title: 'Rocky Mountains',
                     description:
-                        'Cozy wooden chalet with fireplace, ski-in/ski-out access, and private hot tub.',
-                    location: 'Aspen, Colorado',
+                        'Featuring world-class powder, extensive terrain, and stunning mountain scenery across multiple states.',
+                    country: 'USA',
                     imageUrl:
-                        'https://images.unsplash.com/photo-1520984032042-162d526883e0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80',
-                    price: 320,
+                        'https://images.unsplash.com/photo-1520095972714-909e91b038e5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80',
+                    activities: ['Skiing', 'Snowboarding', 'Snowshoeing'],
                     onPressed: () {},
                   ),
                   const SizedBox(height: 16),
-                  LodgingCard(
-                    title: 'Ski Resort Suite',
+                  RegionCard(
+                    title: 'Patagonia',
                     description:
-                        'All-inclusive resort with spacious suites, world-class dining, and direct lift access.',
-                    location: 'Whistler, Canada',
+                        'South American winter destinations with stunning views of the Andes mountains and unique skiing experiences.',
+                    country: 'Argentina',
                     imageUrl:
-                        'https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80',
-                    price: 550,
-                    onPressed: () {},
-                  ),
-                  const SizedBox(height: 16),
-                  LodgingCard(
-                    title: 'Rustic Mountain Cabin',
-                    description:
-                        'Authentic mountain experience with modern amenities, perfect for families.',
-                    location: 'Chamonix, France',
-                    imageUrl:
-                        'https://images.unsplash.com/photo-1553881651-43348b2ca74e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80',
-                    price: 280,
+                        'https://images.unsplash.com/photo-1536323760109-ca8c07450053?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80',
+                    activities: ['Skiing', 'Mountaineering', 'Wildlife Tours'],
                     onPressed: () {},
                   ),
                 ],
@@ -229,7 +218,7 @@ class _LodgingsPageState extends State<LodgingsPage> {
               child: Column(
                 children: [
                   Text(
-                    'Looking for a custom package?',
+                    'Need help planning your trip?',
                     style: GoogleFonts.montserrat(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -238,7 +227,7 @@ class _LodgingsPageState extends State<LodgingsPage> {
                   ),
                   const SizedBox(height: 12),
                   BookButton(
-                    text: 'CONTACT US',
+                    text: 'GET TRAVEL ADVICE',
                     onPressed: () {},
                     padding: const EdgeInsets.symmetric(
                       vertical: 16,

@@ -56,9 +56,8 @@ class LodgingCard extends StatelessWidget {
             padding: const EdgeInsets.all(16.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
               children: [
-                // Título
+                // Title
                 Text(
                   title,
                   style: GoogleFonts.montserrat(
@@ -68,21 +67,22 @@ class LodgingCard extends StatelessWidget {
                   ),
                 ),
 
-                const SizedBox(height: 4),
+                const SizedBox(height: 8),
 
-                // Localização
+                // Location
                 Row(
                   children: [
-                    const Icon(Icons.location_on, size: 16, color: Colors.grey),
+                    const Icon(
+                      Icons.location_on,
+                      size: 16,
+                      color: Color(0xFF1A3E6C),
+                    ),
                     const SizedBox(width: 4),
-                    Expanded(
-                      child: Text(
-                        location,
-                        style: GoogleFonts.montserrat(
-                          fontSize: 14,
-                          color: Colors.grey[700],
-                        ),
-                        overflow: TextOverflow.ellipsis,
+                    Text(
+                      location,
+                      style: GoogleFonts.montserrat(
+                        fontSize: 14,
+                        color: Colors.grey[600],
                       ),
                     ),
                   ],
@@ -90,37 +90,35 @@ class LodgingCard extends StatelessWidget {
 
                 const SizedBox(height: 8),
 
-                // Descrição
+                // Description
                 Text(
                   description,
                   style: GoogleFonts.montserrat(
                     fontSize: 14,
                     color: Colors.grey[800],
                   ),
-                  maxLines: 3,
+                  maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
 
                 const SizedBox(height: 12),
 
-                // Preço e botão
+                // Price and button
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
+                    // Price
                     Text(
-                      '\$${price.toStringAsFixed(0)}/night',
+                      '\$${price.toStringAsFixed(0)} / night',
                       style: GoogleFonts.montserrat(
-                        fontSize: 16,
+                        fontSize: 18,
                         fontWeight: FontWeight.bold,
                         color: const Color(0xFF1A3E6C),
                       ),
                     ),
+                    const Spacer(),
+                    // Button
                     BookButton(
                       onPressed: onPressed,
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 16,
-                        vertical: 8,
-                      ),
                       text: 'BOOK NOW',
                       small: true,
                     ),

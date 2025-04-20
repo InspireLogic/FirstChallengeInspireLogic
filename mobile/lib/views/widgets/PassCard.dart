@@ -98,7 +98,7 @@ class PassCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                // Título
+                // Title
                 Text(
                   title,
                   style: GoogleFonts.montserrat(
@@ -110,7 +110,7 @@ class PassCard extends StatelessWidget {
 
                 const SizedBox(height: 8),
 
-                // Descrição
+                // Description
                 Text(
                   description,
                   style: GoogleFonts.montserrat(
@@ -168,7 +168,7 @@ class PassCard extends StatelessWidget {
 
                 const SizedBox(height: 12),
 
-                // Preço e botão
+                // Price and button
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
