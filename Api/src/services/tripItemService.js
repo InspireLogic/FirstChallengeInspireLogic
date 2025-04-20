@@ -45,13 +45,4 @@ class TripItemService{
         }
     };
 }
-(async ()=>{
-    // const inject = {
-    //     trip_id: 2,
-    //     item_type: 'pass',
-    //     item_id: "model",
-    //     quantity: 100,
-    //     price: "10.99"
-    // }
-    await TripItemService.deleteTripItem(6);
-})();
+module.exports = TripItemService;

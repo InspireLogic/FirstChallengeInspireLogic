@@ -1,7 +1,17 @@
 {
+  "name": "artictravels",
+  "version": "1.0.0",
+  "description": "app to travels",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon ./src/app.js"
+  },
   "dependencies": {
     "dotenv": "^16.5.0",
+    "express": "^5.1.0",
     "mysql2": "^3.14.0",
+    "node-fetch": "^3.3.2",
+    "nodemon": "^3.1.9",
     "sequelize": "^6.37.7"
   }
 }
