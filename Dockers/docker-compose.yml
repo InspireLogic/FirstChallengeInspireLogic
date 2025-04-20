@@ -1,12 +1,12 @@
 services:
   api:
     build:
-      context: .
+      context: ./..                # Caminho da raiz do projeto
       dockerfile: Dockers/api/dockerfile
     ports:
       - "3000:3000"
     volumes:
-      - ./Api:/app
+      - ../../Api:/app
       - /app/node_modules
     environment:
       - NODE_ENV=development
@@ -31,6 +31,7 @@ services:
       - MYSQL_PASSWORD=${DB_PASSWORD}
     volumes:
       - db-data:/var/lib/mysql
+      - ../../DatabaseScript:/docker-entrypoint-initdb.d
     networks:
       - app-network
 

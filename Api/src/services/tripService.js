@@ -10,42 +10,42 @@ class TripService {
   static async createTrip(tripData) {
     try {
       const exists = await this.checkTableExists();
-      if (!exists) throw new Error('Tabela trips não existe no banco de dados.');
+      if (!exists) throw new Error('Table trips does not exist in the database.');
 
       const newTrip = await TripModel.create(tripData);
       return newTrip;
     } catch (error) {
-      throw new Error(`Erro ao criar viagem: ${error.message}`);
+      throw new Error(`Trip creation error: ${error.message}`);
     }
   }
 
   static async getAllTrips() {
     try {
       const exists = await this.checkTableExists();
-      if (!exists) throw new Error('Tabela trips não existe no banco de dados.');
+      if (!exists) throw new Error('Table trips does not exist in the database.');
 
       return await TripModel.findAll();
     } catch (error) {
-      throw new Error(`Erro ao buscar viagens: ${error.message}`);
+      throw new Error(`Error when searching for trips: ${error.message}`);
     }
   }
 
   static async getTripById(id) {
     try {
       const exists = await this.checkTableExists();
-      if (!exists) throw new Error('Tabela trips não existe no banco de dados.');
+      if (!exists) throw new Error('Table trips does not exist in the database.');
 
       const trip = await TripModel.findByPk(id);
       return trip;
     } catch (error) {
-      throw new Error(`Erro ao buscar viagem: ${error.message}`);
+      throw new Error(`Trip search error: ${error.message}`);
     }
   }
 
   static async updateTrip(id, updateData) {
     try {
       const exists = await this.checkTableExists();
-      if (!exists) throw new Error('Tabela trips não existe no banco de dados.');
+      if (!exists) throw new Error('Table trips does not exist in the database.');
 
       const trip = await TripModel.findByPk(id);
       if (!trip) return null;
@@ -53,14 +53,14 @@ class TripService {
       await trip.update(updateData);
       return trip;
     } catch (error) {
-      throw new Error(`Erro ao atualizar viagem: ${error.message}`);
+      throw new Error(`Trip update error: ${error.message}`);
     }
   }
 
   static async deleteTrip(id) {
     try {
       const exists = await this.checkTableExists();
-      if (!exists) throw new Error('Tabela trips não existe no banco de dados.');
+      if (!exists) throw new Error('Table trips does not exist in the database.');
 
       const trip = await TripModel.findByPk(id);
       if (!trip) return null;
@@ -68,7 +68,7 @@ class TripService {
       await trip.destroy();
       return true;
     } catch (error) {
-      throw new Error(`Erro ao deletar viagem: ${error.message}`);
+      throw new Error(`Error deleting trip: ${error.message}`);
     }
   }
 }
