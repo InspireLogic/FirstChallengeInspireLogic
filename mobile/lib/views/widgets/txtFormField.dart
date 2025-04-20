@@ -5,21 +5,25 @@ class TxtFormField extends StatelessWidget {
   final String hintText;
   final bool isPassword;
   final TextInputType? inputType;
-
+  final String? Function(String?)? validator;
+  final Color txtColor;
   const TxtFormField({
     super.key,
     required this.controller,
     required this.hintText,
     this.isPassword = false,
     this.inputType,
+    this.validator,
+    this.txtColor = Colors.black,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      validator: validator,
       controller: controller,
       keyboardType: inputType,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: txtColor),
       decoration: InputDecoration(
         hintText: hintText,
         hintStyle: TextStyle(color: Colors.grey[400]),

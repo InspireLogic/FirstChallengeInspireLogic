@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'buttons/BookButton.dart';
+import '../pages/LodgingDetailPage.dart';
 
 class LodgingCard extends StatelessWidget {
   final String title;
@@ -118,7 +119,22 @@ class LodgingCard extends StatelessWidget {
                     const Spacer(),
                     // Button
                     BookButton(
-                      onPressed: onPressed,
+                      onPressed: () {
+                        // Navigate to details page with the current lodging data
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder:
+                                (context) => LodgingDetailPage(
+                                  title: title,
+                                  description: description,
+                                  location: location,
+                                  imageUrl: imageUrl,
+                                  price: price,
+                                ),
+                          ),
+                        );
+                      },
                       text: 'BOOK NOW',
                       small: true,
                     ),

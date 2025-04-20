@@ -54,6 +54,7 @@ class _LoginPageState extends State<Loginpage> {
               controller: emailController,
               hintText: "example: MauricioLindo@outlook.com",
               inputType: TextInputType.emailAddress,
+              txtColor: Colors.white,
             ),
             const SizedBox(height: 40),
             SizedBox(

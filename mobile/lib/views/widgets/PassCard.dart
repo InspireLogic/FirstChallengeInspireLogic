@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'buttons/BookButton.dart';
+import '../pages/PassDetailPage.dart';
 
 class PassCard extends StatelessWidget {
   final String title;
@@ -181,7 +182,23 @@ class PassCard extends StatelessWidget {
                       ),
                     ),
                     BookButton(
-                      onPressed: onPressed,
+                      onPressed: () {
+                        // Navigate to details page with the current pass data
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder:
+                                (context) => PassDetailPage(
+                                  title: title,
+                                  description: description,
+                                  imageUrl: imageUrl,
+                                  price: price,
+                                  duration: duration,
+                                  benefits: benefits,
+                                ),
+                          ),
+                        );
+                      },
                       padding: const EdgeInsets.symmetric(
                         horizontal: 16,
                         vertical: 8,
