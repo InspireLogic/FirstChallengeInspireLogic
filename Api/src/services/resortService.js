@@ -10,42 +10,42 @@ class ResortService {
   static async createResort(resortData) {
     try {
       const exists = await this.checkTableExists();
-      if (!exists) throw new Error('Tabela resorts não existe no banco de dados.');
+      if (!exists) throw new Error('Resorts table does not exist in the database.');
 
       const newResort = await Resort.create(resortData);
       return newResort;
     } catch (error) {
-      throw new Error(`Erro ao criar resort: ${error.message}`);
+      throw new Error(`Error creating resort: ${error.message}`);
     }
   }
 
   static async getAllResorts() {
     try {
       const exists = await this.checkTableExists();
-      if (!exists) throw new Error('Tabela resorts não existe no banco de dados.');
+      if (!exists) throw new Error('Resorts table does not exist in the database.');
 
       return await Resort.findAll();
     } catch (error) {
-      throw new Error(`Erro ao buscar resorts: ${error.message}`);
+      throw new Error(`Error when searching for resorts: ${error.message}`);
     }
   }
 
   static async getResortById(id) {
     try {
       const exists = await this.checkTableExists();
-      if (!exists) throw new Error('Tabela resorts não existe no banco de dados.');
+      if (!exists) throw new Error('Resorts table does not exist in the database.');
 
       const resort = await Resort.findByPk(id);
       return resort;
     } catch (error) {
-      throw new Error(`Erro ao buscar resort: ${error.message}`);
+      throw new Error(`Resort search error: ${error.message}`);
     }
   }
 
   static async updateResort(id, updateData) {
     try {
       const exists = await this.checkTableExists();
-      if (!exists) throw new Error('Tabela resorts não existe no banco de dados.');
+      if (!exists) throw new Error('Resorts table does not exist in the database.');
 
       const resort = await Resort.findByPk(id);
       if (!resort) return null;
@@ -53,14 +53,14 @@ class ResortService {
       await resort.update(updateData);
       return resort;
     } catch (error) {
-      throw new Error(`Erro ao atualizar resort: ${error.message}`);
+      throw new Error(`Error updating resort: ${error.message}`);
     }
   }
 
   static async deleteResort(id) {
     try {
       const exists = await this.checkTableExists();
-      if (!exists) throw new Error('Tabela resorts não existe no banco de dados.');
+      if (!exists) throw new Error('Resorts table does not exist in the database.');
 
       const resort = await Resort.findByPk(id);
       if (!resort) return null;
@@ -68,7 +68,7 @@ class ResortService {
       await resort.destroy();
       return true;
     } catch (error) {
-      throw new Error(`Erro ao deletar resort: ${error.message}`);
+      throw new Error(`Error deleting resort: ${error.message}`);
     }
   }
 }
