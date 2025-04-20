@@ -33,12 +33,4 @@ PasseModel.init({
     tableName: 'passes',
     timestamps: false
 })
-validateSyncModel(PasseModel);
-(async () => {
-    try {
-        const teste = await PasseModel.findAll();
-        console.log(teste.map(agent => agent.toJSON()));
-    } catch (err) {
-        console.error('Erro:', err.message);
-    }
-})();
+module.exports = PasseModel;

@@ -22,7 +22,7 @@ class AgentService {
   static async getAllAgents() {
     try {
       const exists = await this.checkTableExists();
-      if (!exists) throw new Error('Table agents does not exist in the database.');
+      if (!exists) throw new Error('Tabela agents não existe no banco de dados.');
 
       return await AgentModel.findAll();
     } catch (error) {
