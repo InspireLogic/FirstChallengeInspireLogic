@@ -23,7 +23,6 @@ class AgentService {
     try {
       const exists = await this.checkTableExists();
       if (!exists) throw new Error('Tabela agents não existe no banco de dados.');
-
       return await AgentModel.findAll();
     } catch (error) {
       throw new Error(`Erro ao buscar agentes: ${error.message}`);

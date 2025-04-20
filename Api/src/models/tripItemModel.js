@@ -22,6 +22,10 @@ TripItemModel.init({
         type: DataTypes.ENUM('lodgings', 'pass', 'resorts'),
         allow_null: false,
     },
+    item_id: {
+      type: DataTypes.INTEGER,
+      allow_null: false
+    },
     quantity: {
         type: DataTypes.INTEGER,
         allow_null: false,
