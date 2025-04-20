@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'buttons/BookButton.dart';
+import '../pages/RegionDetailPage.dart';
 
 class RegionCard extends StatelessWidget {
   final String title;
@@ -85,7 +86,7 @@ class RegionCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                // Título
+                // Title
                 Text(
                   title,
                   style: GoogleFonts.montserrat(
@@ -97,7 +98,7 @@ class RegionCard extends StatelessWidget {
 
                 const SizedBox(height: 8),
 
-                // Descrição
+                // Description
                 Text(
                   description,
                   style: GoogleFonts.montserrat(
@@ -135,9 +136,24 @@ class RegionCard extends StatelessWidget {
 
                 const SizedBox(height: 12),
 
-                // Botão
+                // Button
                 BookButton(
-                  onPressed: onPressed,
+                  onPressed: () {
+                    // Navigate to details page with the current region data
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder:
+                            (context) => RegionDetailPage(
+                              title: title,
+                              description: description,
+                              country: country,
+                              imageUrl: imageUrl,
+                              activities: activities,
+                            ),
+                      ),
+                    );
+                  },
                   text: 'EXPLORE REGION',
                   padding: const EdgeInsets.symmetric(vertical: 12),
                 ),

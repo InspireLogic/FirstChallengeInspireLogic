@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'buttons/BookButton.dart';
+import '../pages/PassDetailPage.dart';
 
 class PassCard extends StatelessWidget {
   final String title;
@@ -98,7 +99,7 @@ class PassCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                // Título
+                // Title
                 Text(
                   title,
                   style: GoogleFonts.montserrat(
@@ -110,7 +111,7 @@ class PassCard extends StatelessWidget {
 
                 const SizedBox(height: 8),
 
-                // Descrição
+                // Description
                 Text(
                   description,
                   style: GoogleFonts.montserrat(
@@ -168,7 +169,7 @@ class PassCard extends StatelessWidget {
 
                 const SizedBox(height: 12),
 
-                // Preço e botão
+                // Price and button
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -181,7 +182,23 @@ class PassCard extends StatelessWidget {
                       ),
                     ),
                     BookButton(
-                      onPressed: onPressed,
+                      onPressed: () {
+                        // Navigate to details page with the current pass data
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder:
+                                (context) => PassDetailPage(
+                                  title: title,
+                                  description: description,
+                                  imageUrl: imageUrl,
+                                  price: price,
+                                  duration: duration,
+                                  benefits: benefits,
+                                ),
+                          ),
+                        );
+                      },
                       padding: const EdgeInsets.symmetric(
                         horizontal: 16,
                         vertical: 8,
