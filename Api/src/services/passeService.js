@@ -1,5 +1,5 @@
-const PasseModel = require('../models/passeModel');
-const utils = require('./utils');
+const PasseModel = require('./../models/passeModel');
+// const utils = require('./utils');// off
 class PasseService{
     static async createPasse(passeData){
         try{
@@ -42,4 +42,8 @@ class PasseService{
         }
     }
 }
+(async ()=>{
+    const teste = await PasseService.getAllPasses();
+    teste.map(r=>console.log(r.dataValues.id))
+})();
 module.exports = PasseService;
